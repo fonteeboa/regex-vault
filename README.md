@@ -10,7 +10,7 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
 
-For the English version of this README, click [here](README_EN.md).
+Para a versão em inglês deste README, clique [aqui](README_EN.md).
 
 regex-vault é uma biblioteca centralizada de padrões regex projetada para economizar tempo de desenvolvimento e garantir reutilização. Este projeto visa simplificar processos de validação, proteger operações de backend e tornar a implementação de regex mais fácil para desenvolvedores. Ele inclui uma ampla variedade de padrões regex para validação de entrada, segurança e manipulação de dados.
 
@@ -20,6 +20,7 @@ regex-vault é uma biblioteca centralizada de padrões regex projetada para econ
 - **Economia de Tempo**: Elimina a necessidade de criar padrões regex do zero.
 - **Reutilização**: Centraliza padrões regex para promover a reutilização do código entre projetos.
 - **Foco em Segurança**: Inclui padrões regex para filtragem de comandos perigosos, validação de entradas seguras e prevenção de vulnerabilidades.
+- **Funções Utilitárias**: Inclui funções de validação prontas para uso, como `isValidEmail`, `isValidCPF`, `isValidCNPJ`, etc.
 
 ## 📦 Instalação
 
@@ -49,6 +50,24 @@ const ip = "192.168.1.1";
 if (ipv4Regex.test(ip)) {
   console.log("Endereço IPv4 válido");
 }
+```
+
+### 🛠 Funções Utilitárias
+
+```javascript
+import { isValidEmail, isValidCPF, isValidCNPJ, isValidCreditCard } from 'regex-vault';
+
+// Validar e-mail
+isValidEmail("example@domain.com"); // true
+
+// Validar CPF
+isValidCPF("529.982.247-25"); // true
+
+// Validar CNPJ
+isValidCNPJ("04.252.011/0001-10"); // true
+
+// Validar cartão de crédito
+isValidCreditCard("4111111111111111"); // true
 ```
 
 ## 📚 Padrões Regex
