@@ -44,14 +44,14 @@ describe("Regex patterns", () => {
   test.each([
     "Hello_123@.-",
     "Valid_String 2024"
-  ])("CommonAsciiPattern - should match common ASCII characters: %s", (input) => {
-    expect(Regex.CommonAsciiPattern.test(input)).toBe(true);
+  ])("commonAsciiPattern - should match common ASCII characters: %s", (input) => {
+    expect(Regex.commonAsciiPattern.test(input)).toBe(true);
   });
 
   test.each([
     "Invalid$%^"
-  ])("CommonAsciiPattern - should NOT match invalid ASCII characters: %s", (input) => {
-    expect(Regex.CommonAsciiPattern.test(input)).toBe(false);
+  ])("commonAsciiPattern - should NOT match invalid ASCII characters: %s", (input) => {
+    expect(Regex.commonAsciiPattern.test(input)).toBe(false);
   });
 
   test.each([

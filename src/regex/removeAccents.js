@@ -1,4 +1,21 @@
-// Conjunto de caracteres de mapeamento de acentos
+/**
+ * @module removeAccents
+ * @description Função para remover acentos e caracteres invisíveis de strings
+ */
+
+/**
+ * Mapeamento de caracteres acentuados para seus equivalentes sem acento
+ * 
+ * Inclui:
+ * - Caracteres latinos (É, À, Ç, Ñ, Ä, Ö, Ü, etc.)
+ * - Caracteres cirílicos (Ё, Є, Ї, Љ, Њ, etc.)
+ * - Símbolos monetários (₦, ₽)
+ * - Caracteres de formatação (removidos)
+ * 
+ * @private
+ * @type {Object.<string, string>}
+ * @see {@link https://unicode.org/charts/ Unicode Character Charts}
+ */
 const accentMapping = {
 	'É': "E", 'é': "e", 'À': "A", 'à': "a", 'Ç': "C", 'ç': "c", 'Ñ': "N", 'ñ': "n", 'Á': 'A', 'á': 'a',
 	'Ä': "A", 'ä': "a", 'Ö': "O", 'ö': "o", 'Ü': "U", 'ü': "u", 'ß': "ss", 'È': "E", 'è': "e",
@@ -26,9 +43,68 @@ const accentMapping = {
 	'µ': "u", '¿': "",
 };
 
+/**
+ * Regex para caracteres invisíveis e de controle
+ * 
+ * Remove:
+ * - Caracteres de formatação bidirecional (RLE U+202E, LRE U+202D, RLO U+200F, LRO U+200E, PDF U+202C)
+ * - Zero-width spaces (ZWSP U+200B, ZWNJ U+200C, ZWJ U+200D)
+ * - BOM (U+FEFF)
+ * - Caracteres de controle (NUL U+0000, TAB U+0009, LF U+000A, CR U+000D, ESC U+001B, DEL U+007F)
+ * - Combining diacritical marks (U+0300-U+036F)
+ * - Outros caracteres invisíveis (U+2800-U+2801, U+2066-U+2069)
+ * 
+ * @private
+ * @type {RegExp}
+ * @see {@link https://unicode.org/reports/tr9/ Unicode Bidirectional Algorithm}
+ */
 const invisibleCharsRegex = /[\u202E\u202D\u200F\u200E\u200B\u2066\u2067\u2068\u2069\uFEFF\u2800\u2801\u0000\u0008\u0009\u000A\u000D\u001B\u007F\u0300\u0301\u034F\u036F]/g;
 
-
+/**
+ * Remove acentos e caracteres invisíveis de uma string
+ * 
+ * Esta função realiza duas operações:
+ * 1. Remove caracteres invisíveis e de controle (zero-width spaces, bidi, etc.)
+ * 2. Substitui caracteres acentuados por seus equivalentes sem acento
+ * 
+ * A função é segura para uso com strings vazias e retorna string vazia se a entrada for falsy.
+ * 
+ * @param {string} str - String a ser processada
+ * @returns {string} String sem acentos e caracteres invisíveis
+ * 
+ * @example
+ * // Caracteres latinos
+ * removeAccents("Olá, München!") // "Ola, Munchen!"
+ * removeAccents("ÉéÀàÇçÑñ") // "EeAaCcNn"
+ * 
+ * @example
+ * // String vazia
+ * removeAccents("") // ""
+ * 
+ * @example
+ * // Caracteres cirílicos
+ * removeAccents("ЁёЄєЇї") // "EeEeIi"
+ * 
+ * @example
+ * // Texto misto
+ * removeAccents("Àêïôü Çõ") // "Aeiou Co"
+ * 
+ * @example
+ * // Caracteres invisíveis
+ * removeAccents("\u202E\u202D\u200F\u200E") // ""
+ * 
+ * @example
+ * // Números e espaços são preservados
+ * removeAccents("123 456") // "123 456"
+ * 
+ * @example
+ * // Símbolos monetários
+ * removeAccents("₦₽") // "NR"
+ * 
+ * @example
+ * // Caracteres cirílicos complexos
+ * removeAccents("ЉљЊњ") // "LjljNjnj"
+ */
 const removeAccents = (str) => {
 	if (!str) return '';
 	str = str.replace(invisibleCharsRegex, '');

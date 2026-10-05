@@ -170,5 +170,5 @@ export declare const uuidNoHyphenRegex: RegExp;
 export declare const uuidUppercaseRegex: RegExp;
 
 // xssPatterns.js
-export declare const xssPatern: RegExp;
+export declare const xssPattern: RegExp;
 export declare const jsPattern: RegExp;
