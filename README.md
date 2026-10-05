@@ -2,13 +2,6 @@
 
 [![npm version](https://img.shields.io/npm/v/regex-vault)](https://www.npmjs.com/package/regex-vault)
 [![Apache license](https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fonteeboa_regex-vault&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fonteeboa_regex-vault)
 
 Para a versão em inglês deste README, clique [aqui](README_EN.md).
 
